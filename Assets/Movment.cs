@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class Movment : MonoBehaviour
 {
-    private GameObject other;
+    private GameObject goal;
     public float speed = 0.01f;
     void Start(){
-        other = GameObject.FindGameObjectWithTag("Main");
+        goal = GameObject.FindGameObjectWithTag("Main");
     }
   
     void Update()
     {   
-        Vector3 direction = other.transform.position - transform.position;       
-        transform.position = direction * speed * Time.deltaTime;                                
+        Vector3 direction = goal.transform.position - transform.position;
+        Vector3 pushVector = direction.normalized * speed;
+        transform.Translate(pushVector, Space.World);                               
                 
     }
 }
