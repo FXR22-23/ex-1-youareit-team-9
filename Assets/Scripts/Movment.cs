@@ -6,7 +6,7 @@ public class Movment : MonoBehaviour
 {
     
     private GameObject goal;
-    private bool _isChasing = true;
+    private bool _shouldChangeDirection = false;
     public float speed = 0.005f;
     void Start(){
         goal = GameObject.FindGameObjectWithTag("Main");
@@ -20,9 +20,10 @@ public class Movment : MonoBehaviour
         Debug.DrawRay(transform.position, path, Color.green);
         
         Vector3 pushVector = path.normalized * speed;
-        if (_isChasing == false)
+        if (_shouldChangeDirection)
         {
-            goalVec *= -1;
+            _shouldChangeDirection = false;
+            pushVector *= -1;
         }
         return pushVector;
     }
@@ -35,9 +36,9 @@ public class Movment : MonoBehaviour
         transform.rotation = rotation; 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        _isChasing = !_isChasing;
+        _shouldChangeDirection = true;
     }
 
 }
