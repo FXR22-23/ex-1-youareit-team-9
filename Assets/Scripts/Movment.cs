@@ -35,10 +35,13 @@ public class Movment : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(goalVec, Vector3.up);
         transform.rotation = rotation; 
     }
-
+    
     private void OnTriggerEnter(Collider other)
     {
-        _shouldChangeDirection = true;
+        if (other.tag.Equals("Main"))
+        {
+            _shouldChangeDirection = true;    
+        }
     }
 
 }
