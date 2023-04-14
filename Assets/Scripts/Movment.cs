@@ -11,29 +11,22 @@ public class Movment : MonoBehaviour
     void Start(){
         goal = GameObject.FindGameObjectWithTag("Main");
     }
-  
+
+    Vector3 GetMovement()
+    {
+        Vector3 goalVec = new Vector3(goal.transform.position.x, transform.position.y, goal.transform.position.z);
+        Vector3 path = goalVec - transform.position;
+        Debug.DrawRay(transform.position, path, Color.green);
+        
+        Vector3 pushVector = path.normalized * speed;
+        return pushVector;
+    }
     void Update()
     {
-        Vector3 realGoal = new Vector3(goal.transform.position.x, transform.position.y, goal.transform.position.z);
-        Vector3 direction = realGoal - transform.position;
-        if (!_isChasing)
-        {
-            direction *= -1;
-        }
+        Vector3 goalVec = GetMovement();
+        transform.Translate(goalVec, Space.World);
         
-        Debug.DrawRay(transform.position, direction, Color.green);
-        
-        Vector3 pushVector = direction.normalized * speed;
-        transform.Translate(pushVector, Space.World);
-        
-        Quaternion rotation = Quaternion.LookRotation(direction, Vector3.up);
-        transform.rotation = rotation;
-
-
-        if (direction.magnitude <= Constants.CatchDistance)
-        {
-            direction *= -1;
-            _isChasing = !_isChasing;
-        }
+        Quaternion rotation = Quaternion.LookRotation(goalVec, Vector3.up);
+        transform.rotation = rotation; 
     }
 }
