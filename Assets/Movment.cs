@@ -5,15 +5,15 @@ using UnityEngine;
 public class Movment : MonoBehaviour
 {
     private GameObject other;
-    public float distance = 1.5f;
+    public float speed = 0.01f;
     void Start(){
         other = GameObject.FindGameObjectWithTag("Main");
     }
   
     void Update()
     {   
-        Vector3 direction = other.position - transform.position;       
-        transform.Translate(direction, Space.World);                                 
+        Vector3 direction = other.transform.position - transform.position;       
+        transform.position = direction * speed * Time.deltaTime;                                
                 
     }
 }
