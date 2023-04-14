@@ -14,11 +14,16 @@ public class Movment : MonoBehaviour
 
     Vector3 GetMovement()
     {
+
         Vector3 goalVec = new Vector3(goal.transform.position.x, transform.position.y, goal.transform.position.z);
         Vector3 path = goalVec - transform.position;
         Debug.DrawRay(transform.position, path, Color.green);
         
         Vector3 pushVector = path.normalized * speed;
+        if (_isChasing == false)
+        {
+            goalVec *= -1;
+        }
         return pushVector;
     }
     void Update()
@@ -29,4 +34,10 @@ public class Movment : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(goalVec, Vector3.up);
         transform.rotation = rotation; 
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        _isChasing = !_isChasing;
+    }
+
 }
