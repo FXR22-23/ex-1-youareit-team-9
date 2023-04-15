@@ -3,14 +3,13 @@ using UnityEngine.AI;
 
 public class Movment : MonoBehaviour
 {
-    private GameObject _goal;
+    [SerializeField] GameObject _goal;
     private bool _isChased = false;
     private float speed = 0.01f;
     private NavMeshAgent _agent;
 
     void Start()
     {
-        _goal = GameObject.FindGameObjectWithTag("Main");
         _agent = GetComponent<NavMeshAgent>();
     }
 
@@ -40,7 +39,6 @@ public class Movment : MonoBehaviour
         }
         Vector3 goalVec = GetMovement();
         _agent.SetDestination(goalVec);
-        // transform.Translate(goalVec, Space.World);
 
         Quaternion rotation = Quaternion.LookRotation(goalVec, Vector3.up);
         transform.rotation = rotation;
