@@ -14,6 +14,7 @@ public class Movment : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _agent.speed = Constants.walkingSpeed;
         _currentStamina = Constants.maxStamina;
+        for 
     }
 
     Vector3 GetMovement()
@@ -28,9 +29,6 @@ public class Movment : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(_agent.speed);
-        Debug.Log(_currentStamina);
-        Debug.Log("----------");
         CheckRunning();
         Vector3 goalVec = GetMovement();
         _agent.SetDestination(goalVec);
