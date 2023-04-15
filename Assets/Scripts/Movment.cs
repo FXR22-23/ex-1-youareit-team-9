@@ -9,12 +9,17 @@ public class Movment : MonoBehaviour
     private double _currentStamina;
     private NavMeshAgent _agent;
 
+    public GameObject[] obstaclePrefabs = null; // Array of obstacle prefabs to use
+    public Vector3 center = new Vector3(13.5f, -3f, -45.47f); // The center of the spawn area
+    public float spawnRadius = 40f; // The radius in which obstacles should be spawned
+    public int numObstacles = 10; // The number of obstacles to generate
+    public LayerMask groundLayer; // The layer mask for the ground
+
     void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
         _agent.speed = Constants.walkingSpeed;
         _currentStamina = Constants.maxStamina;
-        
     }
 
     Vector3 GetMovement()
@@ -29,6 +34,7 @@ public class Movment : MonoBehaviour
 
     void Update()
     {
+
         CheckRunning();
         Vector3 goalVec = GetMovement();
         _agent.SetDestination(goalVec);
