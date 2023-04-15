@@ -14,7 +14,7 @@ public class Movment : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _agent.speed = Constants.walkingSpeed;
         _currentStamina = Constants.maxStamina;
-        for 
+        
     }
 
     Vector3 GetMovement()
