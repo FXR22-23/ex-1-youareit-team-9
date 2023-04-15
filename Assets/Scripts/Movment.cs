@@ -38,6 +38,12 @@ public class Movment : MonoBehaviour
 
     void CheckRunning()
     {
+        if (_isChased)
+        {
+            _agent.speed = Constants.walkingSpeed;
+            return;
+        }
+
         double reducedStamina = _currentStamina - Constants.reduceStamina;
         double increasedStamina = _currentStamina + Constants.increasedStamina;
         if (Input.GetKey(KeyCode.LeftShift) && reducedStamina >= 0)
