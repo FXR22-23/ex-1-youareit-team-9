@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class Movment : MonoBehaviour
 {
     private GameObject goal;
     private bool _isChased = false;
-    public float speed = 0.005f;
+    private float speed = 0.01f;
 
     void Start()
     {
@@ -30,6 +31,12 @@ public class Movment : MonoBehaviour
 
     void Update()
     {
+        Vector3 testvec = new Vector3(0, 0, 0);
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            Debug.Log("Left Shift key is pressed!");
+            Debug.DrawLine(transform.position, testvec, Color.red);
+        }
         Vector3 goalVec = GetMovement();
         transform.Translate(goalVec, Space.World);
 
