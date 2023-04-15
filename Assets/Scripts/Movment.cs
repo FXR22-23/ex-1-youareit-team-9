@@ -3,19 +3,20 @@ using UnityEngine.AI;
 
 public class Movment : MonoBehaviour
 {
-    private GameObject goal;
+    private GameObject _goal;
     private bool _isChased = false;
     private float speed = 0.01f;
-    public NavMeshAgent agent;
+    private NavMeshAgent _agent;
 
     void Start()
     {
-        goal = GameObject.FindGameObjectWithTag("Main");
+        _goal = GameObject.FindGameObjectWithTag("Main");
+        _agent = GetComponent<NavMeshAgent>();
     }
 
     Vector3 GetMovement()
     {
-        Vector3 goalVec = new Vector3(goal.transform.position.x, transform.position.y, goal.transform.position.z);
+        Vector3 goalVec = new Vector3(_goal.transform.position.x, transform.position.y, _goal.transform.position.z);
         Vector3 path = goalVec - transform.position;
         Debug.DrawRay(transform.position, path, Color.red);
 
@@ -38,7 +39,7 @@ public class Movment : MonoBehaviour
             Debug.DrawLine(transform.position, testvec, Color.red);
         }
         Vector3 goalVec = GetMovement();
-        agent.SetDestination(goalVec);
+        _agent.SetDestination(goalVec);
         // transform.Translate(goalVec, Space.World);
 
         Quaternion rotation = Quaternion.LookRotation(goalVec, Vector3.up);
