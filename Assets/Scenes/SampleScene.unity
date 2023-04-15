@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: c3b2cdbd960c3435c996c16d3b1c3146, type: 2}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,6 +217,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &778681238 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4723427192733012260, guid: 9a28ae20195e240fdaeb810ecf41ac21, type: 3}
+  m_PrefabInstance: {fileID: 4723427193234664114}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &788056575
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778681238}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,11 +345,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3077800279474092304, guid: 2f19881425d9a3d41a18ce95e877cbe4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 3077800279474092304, guid: 2f19881425d9a3d41a18ce95e877cbe4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3077800279474092304, guid: 2f19881425d9a3d41a18ce95e877cbe4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -355,6 +382,10 @@ PrefabInstance:
     - target: {fileID: 4315853566882443851, guid: 2f19881425d9a3d41a18ce95e877cbe4, type: 3}
       propertyPath: m_Name
       value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 4315853566882443851, guid: 2f19881425d9a3d41a18ce95e877cbe4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5855477592844549232, guid: 2f19881425d9a3d41a18ce95e877cbe4, type: 3}
       propertyPath: m_Enabled
@@ -416,6 +447,14 @@ PrefabInstance:
     - target: {fileID: 1617368559254047822, guid: d13d1d17459b744d49860a1a0c5f1b4e, type: 3}
       propertyPath: m_Name
       value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1617368559254047822, guid: d13d1d17459b744d49860a1a0c5f1b4e, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1617368559254047822, guid: d13d1d17459b744d49860a1a0c5f1b4e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13d1d17459b744d49860a1a0c5f1b4e, type: 3}
@@ -530,6 +569,14 @@ PrefabInstance:
     - target: {fileID: 4723427192733012260, guid: 9a28ae20195e240fdaeb810ecf41ac21, type: 3}
       propertyPath: m_Name
       value: Other
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723427193491228521, guid: 9a28ae20195e240fdaeb810ecf41ac21, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 788056575}
+    - target: {fileID: 4723427193491228521, guid: 9a28ae20195e240fdaeb810ecf41ac21, type: 3}
+      propertyPath: speed
+      value: 0.02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a28ae20195e240fdaeb810ecf41ac21, type: 3}

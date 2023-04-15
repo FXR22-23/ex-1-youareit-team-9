@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Movment : MonoBehaviour
 {
     private GameObject goal;
     private bool _isChased = false;
     private float speed = 0.01f;
+    public NavMeshAgent agent;
 
     void Start()
     {
@@ -18,9 +17,10 @@ public class Movment : MonoBehaviour
     {
         Vector3 goalVec = new Vector3(goal.transform.position.x, transform.position.y, goal.transform.position.z);
         Vector3 path = goalVec - transform.position;
-        Debug.DrawRay(transform.position, path, Color.green);
+        Debug.DrawRay(transform.position, path, Color.red);
 
-        Vector3 pushVector = path.normalized * speed;
+        // Vector3 pushVector = path.normalized * speed;
+        Vector3 pushVector = path;
         if (_isChased)
         {
             pushVector *= -1;
@@ -38,7 +38,8 @@ public class Movment : MonoBehaviour
             Debug.DrawLine(transform.position, testvec, Color.red);
         }
         Vector3 goalVec = GetMovement();
-        transform.Translate(goalVec, Space.World);
+        agent.SetDestination(goalVec);
+        // transform.Translate(goalVec, Space.World);
 
         Quaternion rotation = Quaternion.LookRotation(goalVec, Vector3.up);
         transform.rotation = rotation;
