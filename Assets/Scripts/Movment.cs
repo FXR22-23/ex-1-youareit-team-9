@@ -6,7 +6,7 @@ public class Movment : MonoBehaviour
 {
     
     private GameObject goal;
-    private bool _shouldChangeDirection = false;
+    private bool _isChased = false;
     public float speed = 0.005f;
     void Start(){
         goal = GameObject.FindGameObjectWithTag("Main");
@@ -20,9 +20,8 @@ public class Movment : MonoBehaviour
         Debug.DrawRay(transform.position, path, Color.green);
         
         Vector3 pushVector = path.normalized * speed;
-        if (_shouldChangeDirection)
+        if (_isChased)
         {
-            _shouldChangeDirection = false;
             pushVector *= -1;
         }
         return pushVector;
@@ -40,7 +39,7 @@ public class Movment : MonoBehaviour
     {
         if (other.tag.Equals("Main"))
         {
-            _shouldChangeDirection = true;    
+            _isChased = true;    
         }
     }
 
