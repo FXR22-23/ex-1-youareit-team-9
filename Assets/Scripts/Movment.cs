@@ -6,64 +6,54 @@ public class Movment : MonoBehaviour
 {
     [SerializeField] GameObject _goal;
     private bool _isChased = false;
-    private double currentStamina;
+    private double _currentStamina;
     private NavMeshAgent _agent;
 
     void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
         _agent.speed = Constants.walkingSpeed;
-        currentStamina = Constants.maxStamina;
+        _currentStamina = Constants.maxStamina;
     }
 
     Vector3 GetMovement()
     {
-        Vector3 goalVec = new Vector3(_goal.transform.position.x, transform.position.y, _goal.transform.position.z);
-        Vector3 path = goalVec - transform.position;
-        Debug.DrawRay(transform.position, path, Color.red);
-
-        // Vector3 pushVector = path.normalized * speed;
-        Vector3 pushVector = path;
         if (_isChased)
         {
-            pushVector *= -1;
+            return 2 * transform.position - _goal.transform.position;
         }
 
-        return pushVector;
+        return _goal.transform.position;
     }
 
     void Update()
     {
         Debug.Log(_agent.speed);
-        Debug.Log(currentStamina);
+        Debug.Log(_currentStamina);
         Debug.Log("----------");
         CheckRunning();
         Vector3 goalVec = GetMovement();
         _agent.SetDestination(goalVec);
-
-        Quaternion rotation = Quaternion.LookRotation(goalVec, Vector3.up);
-        transform.rotation = rotation;
     }
 
     void CheckRunning()
     {
-        double reducedStamina = currentStamina - Constants.reduceStamina;
-        double incresedStamina = currentStamina + Constants.increasedStamina;
+        double reducedStamina = _currentStamina - Constants.reduceStamina;
+        double increasedStamina = _currentStamina + Constants.increasedStamina;
         if (Input.GetKey(KeyCode.LeftShift) && reducedStamina >= 0)
         {
             _agent.speed = Constants.sprintSpeed;
-            currentStamina = reducedStamina;
+            _currentStamina = reducedStamina;
         }
         else
         {
-            currentStamina = incresedStamina;
+            _currentStamina = increasedStamina;
             _agent.speed = Constants.walkingSpeed;
-            if(currentStamina > Constants.maxStamina)
+            if (_currentStamina > Constants.maxStamina)
             {
-                currentStamina = Constants.maxStamina;
+                _currentStamina = Constants.maxStamina;
             }
         }
-
     }
 
     private void OnTriggerEnter(Collider other)
