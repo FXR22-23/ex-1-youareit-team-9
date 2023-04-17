@@ -6,14 +6,9 @@ public class Movment : MonoBehaviour
 {
     [SerializeField] GameObject _goal;
     private bool _isChased = false;
+    private bool _needRest = false;
     private double _currentStamina;
     private NavMeshAgent _agent;
-
-    public GameObject[] obstaclePrefabs = null; // Array of obstacle prefabs to use
-    public Vector3 center = new Vector3(13.5f, -3f, -45.47f); // The center of the spawn area
-    public float spawnRadius = 40f; // The radius in which obstacles should be spawned
-    public int numObstacles = 10; // The number of obstacles to generate
-    public LayerMask groundLayer; // The layer mask for the ground
 
     void Start()
     {
@@ -34,7 +29,8 @@ public class Movment : MonoBehaviour
 
     void Update()
     {
-
+        Debug.Log(_agent.speed);
+        Debug.Log(_currentStamina);
         CheckRunning();
         Vector3 goalVec = GetMovement();
         _agent.SetDestination(goalVec);
@@ -42,28 +38,60 @@ public class Movment : MonoBehaviour
 
     void CheckRunning()
     {
+        double reducedStamina = _currentStamina - Constants.reduceStamina;
+
         if (_isChased)
         {
-            _agent.speed = Constants.walkingSpeed;
+            SetNewCondition();
             return;
         }
 
-        double reducedStamina = _currentStamina - Constants.reduceStamina;
-        double increasedStamina = _currentStamina + Constants.increasedStamina;
-        if (Input.GetKey(KeyCode.LeftShift) && reducedStamina >= 0)
+        if (needForSpeed(reducedStamina))
         {
             _agent.speed = Constants.sprintSpeed;
             _currentStamina = reducedStamina;
         }
         else
         {
-            _currentStamina = increasedStamina;
-            _agent.speed = Constants.walkingSpeed;
-            if (_currentStamina > Constants.maxStamina)
-            {
-                _currentStamina = Constants.maxStamina;
-            }
+            SetNewCondition();
         }
+    }
+
+    private void SetNewCondition()
+    {
+        double increasedStamina = _currentStamina + Constants.increasedStamina;
+        _currentStamina = increasedStamina;
+        _needRest = true;
+        _agent.speed = Constants.walkingSpeed;
+        if (_currentStamina > Constants.maxStamina)
+        {
+            _currentStamina = Constants.maxStamina;
+        }
+
+    }
+
+    private bool needForSpeed(double reducedStamina)
+    {
+        Vector3 distance = new(transform.position.x - _goal.transform.position.x,
+            transform.position.y - _goal.transform.position.y, transform.position.z - _goal.transform.position.z);
+        var norm = distance.magnitude;
+
+        if (_currentStamina == Constants.maxStamina)
+        {
+            _needRest = false;
+            return true;
+        }
+        if(norm < Constants.distanceToChase && reducedStamina >= 0)
+        {
+            _needRest = false;
+            return true;
+        }
+        if (!_needRest && reducedStamina > 0)
+        {
+            return true;
+        }
+        _needRest = true;
+        return false;
     }
 
     private void OnTriggerEnter(Collider other)

@@ -5,4 +5,5 @@ public class Constants
     public const float sprintSpeed = 4f;
     public const double reduceStamina = 0.5;
     public const double increasedStamina = 0.2;
+    public const int distanceToChase = 10;
 }
