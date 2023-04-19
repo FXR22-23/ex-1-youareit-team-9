@@ -11,9 +11,6 @@ public class MovementPlayer : MonoBehaviour
     void Start()
     {
         currentStamina = Constants.maxStamina;
-
-        GameObject player = GameObject.FindGameObjectWithTag("Other");
-        Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
     }
 
     private Vector3 GetBaseInput()

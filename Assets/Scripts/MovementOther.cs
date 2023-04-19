@@ -12,10 +12,6 @@ public class MovementOther : MonoBehaviour
 
     void Start()
     {
-        
-        // GameObject player = GameObject.FindGameObjectWithTag("Player");     
-        // Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
-
         _agent = GetComponent<NavMeshAgent>();
         _agent.speed = Constants.walkingSpeed;
         _currentStamina = Constants.maxStamina;
