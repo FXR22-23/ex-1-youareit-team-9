@@ -96,7 +96,7 @@ public class Movment : MonoBehaviour
     {
         if (other.tag.Equals("Main"))
         {
-            _isChased = true;
+            _isChased = !_isChased;
         }
     }
 }
