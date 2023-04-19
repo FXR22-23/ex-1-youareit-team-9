@@ -46,6 +46,7 @@ public class MovementPlayer : MonoBehaviour
     {
         Vector3 baseInput = GetBaseInput();
         transform.position += baseInput * speed * Time.deltaTime;
+        transform.rotation = Quaternion.LookRotation(baseInput);
     }
 
     private void checkRunning()

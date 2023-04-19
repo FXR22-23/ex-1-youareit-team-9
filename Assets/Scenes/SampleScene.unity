@@ -242,8 +242,6 @@ GameObject:
   - component: {fileID: 212137688}
   - component: {fileID: 212137687}
   - component: {fileID: 212137686}
-  - component: {fileID: 212137690}
-  - component: {fileID: 212137689}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -317,31 +315,6 @@ Transform:
   m_Father: {fileID: 975734278}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 31.51, y: 0, z: 0}
---- !u!114 &212137689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 212137685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6289bce63a1e944ea9d898c1436cc109, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
---- !u!114 &212137690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 212137685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d07826398c54426eaaf6a9e6aace585, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &263378392
 GameObject:
   m_ObjectHideFlags: 0
@@ -1331,7 +1304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: c5ef7e5d6c2da6d438b83d882e4469ac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1
+      value: 0.152
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: c5ef7e5d6c2da6d438b83d882e4469ac, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1365,6 +1338,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11100000, guid: c5ef7e5d6c2da6d438b83d882e4469ac, type: 3}
+      propertyPath: m_Animation
+      value: 
+      objectReference: {fileID: 7400000, guid: db33dcb8801027b41a18a9a596fe795f, type: 3}
+    - target: {fileID: 11100000, guid: c5ef7e5d6c2da6d438b83d882e4469ac, type: 3}
+      propertyPath: m_Animations.Array.data[1]
+      value: 
+      objectReference: {fileID: 7400000, guid: db33dcb8801027b41a18a9a596fe795f, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5ef7e5d6c2da6d438b83d882e4469ac, type: 3}
 --- !u!1 &975734269 stripped
@@ -3180,7 +3161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4723427192732781764, guid: 9a28ae20195e240fdaeb810ecf41ac21, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.06
+      value: 0.152
       objectReference: {fileID: 0}
     - target: {fileID: 4723427192732781764, guid: 9a28ae20195e240fdaeb810ecf41ac21, type: 3}
       propertyPath: m_LocalPosition.z
