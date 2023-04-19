@@ -51,7 +51,7 @@ public class MovementPlayer : MonoBehaviour
         {
             lastDirection = baseInput;
         }
-        transform.rotation = Quaternion.LookRotation(lastDirection);
+        transform.rotation = Quaternion.LookRotation(lastDirection, Vector3.up);
     }
 
     private void checkRunning()
