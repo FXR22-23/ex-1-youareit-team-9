@@ -8,6 +8,14 @@ public class MovementPlayer : MonoBehaviour
     private double currentStamina;
 
     // Start is called before the first frame update
+    void Start()
+    {
+        currentStamina = Constants.maxStamina;
+
+        GameObject player = GameObject.FindGameObjectWithTag("Other");
+        Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
+    }
+
     private Vector3 GetBaseInput()
     {
         //returns the basic values, if it's 0 than it's not active.
@@ -36,18 +44,11 @@ public class MovementPlayer : MonoBehaviour
 
         return p_Velocity;
     }
-
-    void Start()
-    {
-        currentStamina = Constants.maxStamina;
-
-    }
-
+    
     void Update()
     {
         Vector3 baseInput = GetBaseInput();
         transform.position += baseInput * speed * Time.deltaTime;
-
     }
 
     private void checkRunning()
