@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 1
+    agentRadius: 0.5
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.4
@@ -114,7 +114,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.33333334
+    cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -1392,19 +1392,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
---- !u!65 &975734271
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 975734269}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &975734275
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1989,8 +1976,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305681765}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.595, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0.5625}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 788056582}
@@ -3236,7 +3223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4723427192732781764, guid: 9a28ae20195e240fdaeb810ecf41ac21, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -45.4
+      value: -45.385
       objectReference: {fileID: 0}
     - target: {fileID: 4723427192732781764, guid: 9a28ae20195e240fdaeb810ecf41ac21, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3496,11 +3483,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4723427193491228496, guid: 9a28ae20195e240fdaeb810ecf41ac21, type: 3}
       propertyPath: m_Size.y
-      value: 1
+      value: 1.9285023
       objectReference: {fileID: 0}
     - target: {fileID: 4723427193491228496, guid: 9a28ae20195e240fdaeb810ecf41ac21, type: 3}
       propertyPath: m_Size.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723427193491228496, guid: 9a28ae20195e240fdaeb810ecf41ac21, type: 3}
+      propertyPath: m_Center.y
+      value: 0.46425128
       objectReference: {fileID: 0}
     - target: {fileID: 4723427193491228500, guid: 9a28ae20195e240fdaeb810ecf41ac21, type: 3}
       propertyPath: m_IsKinematic
