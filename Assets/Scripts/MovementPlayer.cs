@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovementPlayer : MonoBehaviour
 {
     [SerializeField] private float speed;
+    private double currentStamina;
 
     // Start is called before the first frame update
     private Vector3 GetBaseInput()
@@ -31,7 +32,15 @@ public class MovementPlayer : MonoBehaviour
             p_Velocity += new Vector3(1, 0, 0);
         }
 
+        checkRunning();
+
         return p_Velocity;
+    }
+
+    void Start()
+    {
+        currentStamina = Constants.maxStamina;
+
     }
 
     void Update()
@@ -39,7 +48,25 @@ public class MovementPlayer : MonoBehaviour
         Vector3 baseInput = GetBaseInput();
         transform.position += baseInput * speed * Time.deltaTime;
 
-        // Quaternion rotation = Quaternion.LookRotation(goalVec, Vector3.up);
-        // transform.rotation = rotation;
+    }
+
+    private void checkRunning()
+    {
+        var reducedStamina = currentStamina - Constants.reduceStamina;
+        var increasedStamina = currentStamina + Constants.increaseStamina;
+        if (Input.GetKey(KeyCode.LeftShift) & reducedStamina >= 0)
+        {
+            speed = Constants.sprintSpeed;
+            currentStamina = reducedStamina;
+        }
+        else
+        {
+            currentStamina = increasedStamina;
+            speed = Constants.walkingSpeed;
+            if (currentStamina > Constants.maxStamina)
+            {
+                currentStamina = Constants.maxStamina;
+            }
+        }
     }
 }

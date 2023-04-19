@@ -44,7 +44,7 @@ public class Movment : MonoBehaviour
             return;
         }
 
-        if (needForSpeed(reducedStamina))
+        if (NeedForSpeed(reducedStamina))
         {
             _agent.speed = Constants.sprintSpeed;
             _currentStamina = reducedStamina;
@@ -57,7 +57,7 @@ public class Movment : MonoBehaviour
 
     private void SetNewCondition()
     {
-        double increasedStamina = _currentStamina + Constants.increasedStamina;
+        double increasedStamina = _currentStamina + Constants.increaseStamina;
         _currentStamina = increasedStamina;
         _needRest = true;
         _agent.speed = Constants.walkingSpeed;
@@ -68,7 +68,7 @@ public class Movment : MonoBehaviour
 
     }
 
-    private bool needForSpeed(double reducedStamina)
+    private bool NeedForSpeed(double reducedStamina)
     {
         Vector3 distance = new(transform.position.x - _goal.transform.position.x,
             transform.position.y - _goal.transform.position.y, transform.position.z - _goal.transform.position.z);
