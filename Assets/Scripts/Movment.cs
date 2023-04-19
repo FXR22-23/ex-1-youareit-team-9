@@ -29,8 +29,6 @@ public class Movment : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(_agent.speed);
-        Debug.Log(_currentStamina);
         CheckRunning();
         Vector3 goalVec = GetMovement();
         _agent.SetDestination(goalVec);
