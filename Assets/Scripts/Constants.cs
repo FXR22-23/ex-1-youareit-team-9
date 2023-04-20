@@ -1,7 +1,7 @@
 public class Constants
 {
     public const int maxStamina = 100;
-    public const float walkingSpeed = 3;
+    public const float walkingSpeed = 3.5f;
     public const float sprintSpeed = 10;
     public const float playerAccleration = 2;
     public const double reduceStamina = 0.3;
