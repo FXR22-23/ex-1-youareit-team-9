@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +8,12 @@ public class MovementPlayer : MonoBehaviour
     [SerializeField] private float speed;
     private double currentStamina;
     private Vector3 lastDirection = Vector3.zero;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         currentStamina = Constants.maxStamina;
     }
 
@@ -49,10 +52,20 @@ public class MovementPlayer : MonoBehaviour
         transform.position += baseInput * speed * Time.deltaTime;
         if (baseInput != Vector3.zero)
         {
+            anim.Play("Walking");
             lastDirection = baseInput;
+        }
+        else
+        {
+            anim.Play("Happy Idle");
         }
         transform.rotation = Quaternion.LookRotation(lastDirection, Vector3.up);
     }
+
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     anim.Play("Goalkeeper Catch");
+    // }
 
     private void checkRunning()
     {
