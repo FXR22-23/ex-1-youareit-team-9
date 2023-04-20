@@ -30,6 +30,8 @@ public class MovementOther : MonoBehaviour
     void Update()
     {
         CheckRunning();
+        Debug.Log(_agent.speed);
+        Debug.Log(_currentStamina);
         Vector3 goalVec = GetMovement();
         _agent.SetDestination(goalVec);
     }
@@ -70,21 +72,13 @@ public class MovementOther : MonoBehaviour
 
     private bool NeedForSpeed(double reducedStamina)
     {
-        Vector3 distance = new(transform.position.x - _goal.transform.position.x,
-            transform.position.y - _goal.transform.position.y, transform.position.z - _goal.transform.position.z);
-        var norm = distance.magnitude;
 
         if (_currentStamina == Constants.maxStamina)
         {
             _needRest = false;
             return true;
         }
-        if(norm < Constants.distanceToChase && reducedStamina >= 0)
-        {
-            _needRest = false;
-            return true;
-        }
-        if (!_needRest && reducedStamina > 0)
+        if (!_needRest && reducedStamina >= 0)
         {
             return true;
         }
