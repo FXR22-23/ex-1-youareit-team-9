@@ -7,7 +7,7 @@ public class MovementPlayer : MonoBehaviour
 {
     [SerializeField] private float speed;
     private double currentStamina;
-    private Vector3 lastDirection = Vector3.zero;
+    private Vector3 lastDirection = Vector3.back;
     private Animator anim;
 
     // Start is called before the first frame update
